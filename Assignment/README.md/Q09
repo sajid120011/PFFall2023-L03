@@ -1,0 +1,65 @@
+#include <stdio.h>
+int main() 
+{
+    int X, Y;
+    printf("Enter the number of company branches (X): ");
+    scanf("%d", &X);
+    printf("Enter the number of company mobile phones in each branch (Y): ");
+    scanf("%d", &Y);
+    double bills[X][Y];
+    for (int i = 0; i < X; i++) 
+	{
+        for (int j = 0; j < Y; j++) 
+		{
+            printf("Enter the bill amount for Branch %d, Mobile Phone %d: ", i + 1, j + 1);
+            scanf("%lf", &bills[i][j]);
+        }
+    }
+    double totalBillAllBranches = 0.0;
+    for (int i = 0; i < X; i++) 
+	{
+        for (int j = 0; j < Y; j++) 
+		{
+            totalBillAllBranches += bills[i][j];
+        }
+    }
+    printf("Total bill for all branches: %.2lf\n", totalBillAllBranches);
+    for (int i = 0; i < X; i++) 
+	{
+        double totalBillBranch = 0.0;
+        for (int j = 0; j < Y; j++) 
+		{
+            totalBillBranch += bills[i][j];
+        }
+        printf("Total bill for Branch %d: %.2lf\n", i + 1, totalBillBranch);
+    }
+    double maxBill = bills[0][0];
+    int maxBranchID = 1;
+    for (int i = 0; i < X; i++) 
+	{
+        for (int j = 0; j < Y; j++) 
+		{
+            if (bills[i][j] > maxBill) 
+			{
+                maxBill = bills[i][j];
+                maxBranchID = i + 1;
+            }
+        }
+    }
+    printf("Branch ID where maximum bill arrived: %d\n", maxBranchID);
+    int maxMobilePhoneID = 1;
+    for (int i = 0; i < X; i++) 
+	{
+        for (int j = 0; j < Y; j++) 
+		{
+            if (bills[i][j] == maxBill) 
+			{
+                maxBranchID = i + 1;
+                maxMobilePhoneID = j + 1;
+                break;
+            }
+        }
+    }
+    printf("Branch and Mobile Phone IDs where bill is highest: Branch %d, Mobile Phone %d\n", maxBranchID, maxMobilePhoneID);
+    return 0;
+}
