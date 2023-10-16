@@ -1,0 +1,38 @@
+#include <stdio.h>
+int main() 
+{
+    int N, S;
+    printf("Enter the size of the array: ");
+    scanf("%d", &N);
+    int arr[N];
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < N; i++) 
+	{
+        scanf("%d", &arr[i]);
+    }
+    printf("Enter the target sum (S): ");
+    scanf("%d", &S);
+    int left = 0,right=0,currentSum=0,found=0; 
+    while (right < N) 
+	{
+        currentSum += arr[right];
+        while (currentSum > S) 
+		{
+            currentSum -= arr[left];
+            left++;
+        }
+
+        if (currentSum == S) 
+		{
+            printf("sum found between index %d and %d\n", left, right);
+            found = 1;
+            break;
+        }
+        right++;
+    }
+    if (!found) 
+	{
+        printf("No sum found that adds up to %d\n", S);
+    }
+    return 0;
+}
