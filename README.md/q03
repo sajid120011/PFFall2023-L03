@@ -1,1 +1,96 @@
-
+#include<stdio.h>
+int main()
+{
+	int price, list[][]={1,300,0,0,1,320,1,310,0,0,1,375,1,400},i,j,choice,best_price=400,day;
+	char time;
+	printf("Enter an option\n");
+	printf("choice 1 for avaialblity of flight, time slot and price\n");
+	printf("choice 2 to check the availablity of flight of best price in the evening\n");
+	printf("choice 3 for flights on a specific day\n");
+	scanf("%d",&choice);
+	if(choice==1)
+	{
+		printf("Enter time:\n");
+		scanf("%c",&time);
+		printf("Enter price:\n");
+		scanf("%d",&price);
+		if(time=='M')
+		{
+			for(i=0;i<5;i++)
+			{
+				j=0;
+				if(list[i][j]==1)
+				{
+					j++;
+					if(list[i][j]==price)
+					{
+						printf("Flight is available on %d day:\n ",i+1);
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		for(i=0;i<5;i++)
+		{
+			j=2;
+			if(list[i][j]==1)
+			{
+				j++;
+				if(list[i][j]==price)
+				{
+					printf("Flight is available on %d day: \n",i+1);
+				}
+			}
+		}
+	}
+	else if(choice==2)
+	{
+		j=1;
+		for(i=0;i<5;i++)
+		{
+			if(list[i][j]!=0 && list[i][j]<best_price)
+			{
+				best_price=list[i][j];
+				i++;
+			}
+		}
+		printf("best price for morning flight is %d\n",best_price);
+	}
+	else if(choice==3)
+	{
+		j=3;
+		for(i=0;i<5;i++)
+		{
+			if(list[i][j]!=0 && list[i][j]<best_price)
+			{
+				best_price=list[i][j];
+				i++;
+			}
+		}
+		printf("best price for morning flight is %d\n",best_price);
+	}
+	else if(choice==4)
+	{
+		printf("Enetr a day to check the flight availablity\n");
+		scanf("%d",&day);
+		i=day-1;
+		for(j=0;j<4;j+=1)
+		{
+			if(list[i][j]==1)
+			{
+				j++;
+				if(j==1)
+				{
+					printf("Morning time available flight price=%d\n",list[i][j]);
+					else if(j==3)
+					{
+						printf("Evening time available flight price is=%d\n",list[i][j]);
+					}
+				}
+			}
+		}
+	}
+	return 0;
+}
