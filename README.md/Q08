@@ -1,0 +1,26 @@
+#include<stdio.h>
+int main()
+{
+	unsigned int num,persistence=0,prod=1;
+	printf("Enter a positive number:\n");
+	scanf("%d",&num);
+	while(scanf("%d",&num)!=EOF)
+	{
+		if(num<10)
+		{
+			printf("Persistence of number is=%d",persistence);
+		}
+		while(1)
+		{
+			prod=prod*(num%10);
+			num=num%10;
+			if(num==0)
+			{
+				num=prod;
+				persistence+=1;
+				prod=1;
+			}
+		}
+	}
+	printf("Persistence of number is=%d",persistence);
+}
