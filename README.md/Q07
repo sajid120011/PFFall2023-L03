@@ -1,0 +1,55 @@
+#include<stdio.h>
+int main()
+{
+	int ages,prices,i,j,k;
+	printf("Enter the age for which you want the shirt and the price of shirt you want to buy:\n");
+	scanf("%d %d",&ages,&prices);
+	int shirt[ages][prices];
+	for(i=0;i<ages;i++)
+	{
+		for(j=0;j<prices;j++)
+		{
+			if(j==0)
+			{
+			printf("Enter the ages and prices:\n");
+			scanf("%d",&shirt[i][j]);
+		    }
+		}
+	}
+	for(i=0;i<ages;i++)
+	{
+		for(j=0;j<prices;j++)
+		{
+			if(j==1)
+			{
+			printf("Enter the ages and prices:\n");
+			scanf("%d",&shirt[i][j]);
+		    }
+		}
+	}
+	for(i=0;i<ages;i++)
+	{
+		for(j=1;j<prices;j++)
+		{
+			for(k=j+1;k<prices;k++)
+			{
+				if(shirt[i][j]<shirt[i][k])
+				{
+					int temp=shirt[i][j];
+					shirt[i][j]=shirt[i][k];
+					shirt[i][k]=temp;
+				}
+			}
+		}
+	}
+	printf("\n");
+	for(i=0;i<ages;i++)
+	{
+		for(j=0;j<prices;j++)
+		{
+			printf("%d",shirt[i][j]);
+		}
+		printf("\n");
+	}
+	return 0;
+}
