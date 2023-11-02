@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<stdbool.h>
+int main()
+{
+	int row,coloumn,i,j,k,l,min,flag=1;
+	printf("Enter the rows and coloumns of matrix:\n");
+	scanf("%d , %d",&row,&coloumn);
+	int mat[row][coloumn];
+	for(i=0;i<row;i++)
+	{
+		for(j=0;j<coloumn;j++)
+		{
+			printf("Enter elements of array: ");
+			scanf("%d",mat[i][j]);
+		}
+		printf("\n");
+	}
+	i=row-1;
+	while(i>=0)
+	{
+		j=coloumn-2;
+		while(j>=0)
+		{
+			k=i;
+			if(mat[i][j]==0)
+			{
+				--j;
+				continue;
+			}
+			while(k<i+1)
+			{
+				l=j+1;
+				while(l<j+2)
+				{
+					if(flag==1)
+					{
+						min=mat[k][l];
+						flag=0;
+					}
+					if(min>mat[k][l])
+					{
+						min=mat[k][l];
+					}
+					++l;
+				}
+				++k;
+			}
+			mat[i][j]=min+1;
+			--j;
+			flag=1;
+		}
+		--i;
+	}
+	k=0;
+	for(i=0;i<row;i++)
+	{
+		for(j=0;j<coloumn;j++)
+		{
+			if(mat[i][j]>k)
+			{
+				k=mat[i][j];
+			}
+		}
+	}
+	printf("largest square matrix of 1's is=%d'",k);
+	return 0;
+}
