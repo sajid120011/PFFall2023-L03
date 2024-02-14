@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class WaterBottle 
+{
+private:
+    string company;
+    string color;
+    float capacity_l;
+    double capacity_ml;
+public:
+    WaterBottle(const string& company,const string& color, float capacity_l) 
+    {
+        this->company=company;
+        this->color=color;
+        this->capacity_l=capacity_l;
+        this->capacity_ml=capacity_ml*1000.0;
+    }
+    string getCompany() const 
+    {
+        return company;
+    }
+    string getColor() const 
+    { 
+        return color; 
+    }
+    float getCapacityInLiters() const 
+    { 
+        return capacity_l; 
+    }
+    double getCapacityInMilliliters() const 
+    { 
+        return capacity_ml; 
+    }
+    void updateCapacity(int consumed_ml) 
+    {
+        if(consumed_ml<=0) 
+        {
+            cout<<"Error: You must enter a positive number.\n";
+            return; 
+        }
+        if(consumed_ml>capacity_ml) 
+        {
+            cout<<"Error!.\n";
+            return; 
+        }
+        capacity_ml=capacity_ml-consumed_ml;
+        capacity_l=capacity_ml/1000.0;  
+    }
+    void RemainingCapacity() const 
+    {
+        cout<<"Remaining water:\n";
+        cout<<fixed;
+        cout<<"In liters: "<<capacity_l<<" L\n";
+        cout<<"In milliliters: "<<capacity_ml<<" mL\n";
+    }
+};
+int main() 
+{
+    string company,color;
+    float capacity_l;
+    cout<<"Enter water bottle company: ";
+    getline(cin,company); 
+    cout<<"Enter water bottle color: ";
+    getline(cin, color);
+    cout<<"Enter water bottle capacity in liters: ";
+    cin>>capacity_l;
+    WaterBottle bottle(company,color,capacity_l); 
+    int consumed_ml;
+    cout<<"Enter amount of water consumed in milliliters: ";
+    cin>>consumed_ml;
+    bottle.updateCapacity(consumed_ml);
+    bottle.RemainingCapacity();
+    return 0;
+}
