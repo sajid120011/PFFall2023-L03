@@ -1,0 +1,89 @@
+// 23k-0077
+// Sajid Ali
+#include<iostream>
+#include<string>
+using namespace std;
+class BoardMarker 
+{
+private:
+    string brand;
+    string shade;
+    bool refillable;
+    int ink;
+public:
+    void setBrand(const string Brand) 
+    {
+        brand=Brand;
+    }
+    void setShade(const string& Shade) 
+    {
+        shade=Shade;
+    }
+    void setRefillable(bool Refillable) 
+    {
+        refillable=Refillable;
+    }
+    void setInk(int Ink) 
+    {
+        ink=Ink;
+    }
+    string getBrand()
+    {
+        return brand;
+    }
+    string getShade() 
+    {
+        return shade;
+    }
+    bool isRefillable() 
+    {
+        return refillable;
+    }
+    int getInk()  
+    {
+        return ink;
+    }
+    void write() 
+    {
+        if(ink<=0) 
+        {
+            cout<<"Ink depleted. Cannot write."<<endl;
+        } 
+        else 
+        {
+            cout<<"Writing"<<endl;
+        }
+    }
+    void refill() 
+    {
+        if(refillable) 
+        {
+            ink=100;
+            cout<<"Marker refilled."<<endl;
+        }
+        else 
+        {
+            cout<<"Marker is not refillable."<<endl;
+        }
+    }
+};
+int main() 
+{
+    BoardMarker b1;
+    string Brand,Shade;
+    cout<<"Enter brand:\n";
+    cin>>Brand;
+    cout<<"Enter shade:\n";
+    cin>>Shade;
+    b1.setBrand(Brand);
+    b1.setShade(Shade);
+    b1.setRefillable(true);
+    b1.setInk(100);
+    cout<<"Brand: "<<b1.getBrand()<<endl;
+    cout<<"Shade: "<<b1.getShade()<<endl;
+    cout<<"Refillable: "<<(b1.isRefillable()?"Yes" : "No")<< endl;
+    cout<<"Ink: "<<b1.getInk()<<"%"<<endl;
+    b1.write();
+    b1.refill();
+    return 0;
+}
