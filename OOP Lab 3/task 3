@@ -1,0 +1,68 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class calender
+{
+public:
+	int month=12;
+	int day=31;
+	string cal[12][31];
+	void addTask(string task, int day, int month)
+	{
+		if(month>=1 && month<=12 && day>=1 && day<=31)
+		{
+			cal[month-1][day-1]=task;
+		}
+		else
+		{
+			cout<<"Invalid Day or Month\n";
+		}
+	}
+	void removeTask(string task, int day, int month)
+	{
+		if(month>=1 && month<=12 && day>=1 && day<=31)
+		{
+			cal[month-1][day-1]=" ";
+	    }
+		else
+		{
+			cout<<"Invalid Day or Month\n";
+		}
+	}
+	void display()
+	{
+		for(int m=0;m<12;m++)
+		{
+			cout<<"Month: "<<month+1<<endl;
+			for(int d=0;d<31;d++)
+			{
+				if(cal[month][day]!="")
+				{
+					cout<<"Day: "<<day+1<<"\n"<<cal[month][day]<<endl;
+				}
+			}
+		}
+	}
+};
+int main()
+{
+	calender c1;
+	int year;
+	cout<<"\nEnter 0 for month to exist\n";
+	cout<<"Enter year\n";
+	cin>>year;
+	cout<<"Year: "<<year;
+		int day, month;
+		string task;
+		cout<<"\nEnter month(1 - 12)\n";
+		cin>>month;
+		cout<<"Enter day(1 - 30)\n";
+		cin>>day;
+		cout<<"Enter task\n";
+		cin.ignore();
+		getline(cin,task);
+		c1.addTask(task, day, month);
+	cout<<"Display tasks\n";
+	c1.display();
+	return 0;
+}
