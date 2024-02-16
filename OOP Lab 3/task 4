@@ -1,0 +1,122 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class smartphone
+{
+private:
+    string brand;
+    string model;
+    string resolution;
+    int ram;
+    int rom;
+    int storage;
+public:
+    void setBrand(string brand)
+    {
+        this->brand=brand;
+    }
+    void setModel(string model)
+    {
+        this->model=model;
+    }
+    void setResolution(string resolution)
+    {
+        this->resolution=resolution;
+    }
+    void setRAM(int ram)
+    {
+        this->ram=ram;
+    }
+    void setROM(int rom)
+    {
+        this->rom=rom;
+    }
+    void setStorage(int storage)
+    {
+        this->storage=storage;
+    }
+    string getBrand() const
+    {
+        return brand;
+    }
+    string getModel() const
+    {
+        return model;
+    }
+    string getResolution() const
+    {
+        return resolution;
+    }
+    int getRAM() const
+    {
+        return ram;
+    }
+    int getROM() const
+    {
+        return rom;
+    }
+    int getStorage() const
+    {
+        return storage;
+    }
+    void call(long int number)
+    {
+        cout<<"Making phone call with: \n"<<number;
+    }
+    void message(long int number, string msg)
+    {
+        cout<<"Sending Message: \n"<<msg<<"\n to:"<<number;
+    }
+    void wifi(string name)
+    {
+        cout<<"Connecting to wifi: \n"<<name;
+    }
+    void browse()
+    {
+        cout<<"History is browsing.\n";
+    }
+};
+int main()
+{
+    smartphone s;
+    string brand,model,resolution;
+    int ram,rom,storage;
+    long int num;
+    string msg,name,history;
+    cout<<"Enter mobile brand: \n";
+    getline(cin,brand);
+    cout<<"Enter mobile model: \n";
+    getline(cin,model);
+    cout<<"Enter mobile resolution: \n";
+    getline(cin,resolution);
+    cout<<"Enter mobile RAM: \n";
+    cin>>ram;
+    cout<<"Enter mobile ROM: \n";
+    cin>>rom;
+    cout<<"Enter mobile storage: \n";
+    cin>>storage;
+    cout<<"Enter phone number: \n";
+    cin>>num;
+    cout<<"Enter message: \n";
+    getline(cin,msg);
+    cout<<"Enter Wifi Name: \n";
+    getline(cin,name);
+    s.setBrand(brand);
+    s.setModel(model);
+    s.setResolution(resolution);
+    s.setRAM(ram);
+    s.setROM(rom);
+    s.setStorage(storage);
+    cout<<"Brand: "<<s.getBrand()<<endl;
+    cout<<"Model: "<<s.getModel()<<endl;
+    cout<<"resolution: "<<s.getResolution()<<endl;
+    cout<<"RAM: "<<s.getRAM()<<endl;
+    cout<<"ROM: "<<s.getROM()<<endl;
+    cout<<"Storage: "<<s.getStorage()<<endl;
+    int i;
+    s.call(num);
+    s.message(num,msg);
+    s.wifi(name);
+    s.browse();
+    return 0;
+}
